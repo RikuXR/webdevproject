@@ -1,0 +1,27 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "scss": "node-sass --output-style compressed -o dist/css src/scss",
+    "autoprefixer": "postcss -u autoprefixer -r dist/css",
+    "imagemin": "imagemin src/img/* --out-dir=dist/img",
+    "serve": "browser-sync -start --server --files \"dist/css/*.css, *.html\"",
+    "build:css": "npm run scss && npm run autoprefixer",
+    "build:all": "npm run build:css && npm run imagemin",
+    "watch:css": "onchange \"src/scss/*.scss\" -- npm run build:css",
+    "watch:all": "parallelshell \"npm run serve\" \"npm run watch:css\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.7.6",
+    "browser-sync": "^2.26.7",
+    "imagemin-cli": "^5.1.0",
+    "node-sass": "^4.13.1",
+    "onchange": "^6.1.0",
+    "parallelshell": "^3.0.1",
+    "postcss-cli": "^7.1.0"
+  }
+}
